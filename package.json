@@ -1,0 +1,18 @@
+{
+  "name": "code-playground-1759079220703",
+  "author": "Naveensingh",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6"
+  },
+  "dependencies": {
+    "lodash": "4.17"
+  }
+}
