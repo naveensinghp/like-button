@@ -4,6 +4,11 @@ import './styles.css';
 
 const btn = document.querySelector('.particleButton');
 
+// Our "Source of Truth" for animation's fade duration
+// This ensures the cleanup timeout will never fire 
+// before the animation has completed 
+const FADE_DURATION = 1000;
+
 btn.addEventListener('click', () => {
   btn.classList.toggle('liked');
 
@@ -16,6 +21,8 @@ btn.addEventListener('click', () => {
   }
 
 
+  // We Will Collect Freshly Created Particle in this array:
+  const particles = [];
   range(5).forEach(() => {
     const particle = document.createElement('span');
     particle.classList.add('particle');
@@ -24,16 +31,16 @@ btn.addEventListener('click', () => {
     particle.style.left = random(0,100) + '%';
 
     btn.appendChild(particle);
+
+    // Keep Track of this particle, So that it can be cleaned up
+    particles.push(particle);
   })
 
+  // Scheduled Timeout that will destroy freshly-created
+  window.setTimeout(() => {
+    particles.forEach((particle) => {
+      particle.remove();
+    });
+  },FADE_DURATION  + 200)
 
-  // range(5).forEach(() => {
-  //   const particle = document.createElement('span');
-  //   particle.classList.add('particle');
-
-  //   particle.style.top = random(0, 100) + '%';
-  //   particle.style.left = random(0, 100) + '%';
-
-  //   btn.appendChild(particle);
-  // });
 });

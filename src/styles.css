@@ -1,5 +1,5 @@
 html {
-  --red: oklch(0.65 0.3 19.41);
+  --white: #fff;
 }
 body {
   display: grid;
@@ -17,15 +17,14 @@ body {
 
   &:hover {
     background: hsl(0deg 0% 100% / 0.1);
-
     path {
-      stroke: var(--red);
+      stroke: var(--white);
     }
   }
 
   &.liked path {
-    fill: var(--red);
-    stroke: var(--red);
+    fill: var(--white);
+    stroke: var(--white);
   }
 }
 
