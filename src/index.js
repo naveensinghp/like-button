@@ -29,9 +29,12 @@ btn.addEventListener('click', () => {
 
     particle.style.top = random(0,100) + '%';
     particle.style.left = random(0,100) + '%';
+    particle.style.setProperty(
+      '--fade-duration',
+      FADE_DURATION + 'ms'
+    );
 
     btn.appendChild(particle);
-
     // Keep Track of this particle, So that it can be cleaned up
     particles.push(particle);
   })
