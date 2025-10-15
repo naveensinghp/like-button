@@ -8,6 +8,9 @@ const btn = document.querySelector('.particleButton');
 // This ensures the cleanup timeout will never fire 
 // before the animation has completed 
 const FADE_DURATION = 1000;
+const MAGNITUDE = 50;
+
+
 
 btn.addEventListener('click', () => {
   btn.classList.toggle('liked');
@@ -27,8 +30,14 @@ btn.addEventListener('click', () => {
     const particle = document.createElement('span');
     particle.classList.add('particle');
 
-    particle.style.top = random(0,100) + '%';
-    particle.style.left = random(0,100) + '%';
+//    particle.style.top = random(0,100) + '%';
+//    particle.style.left = random(0,100) + '%';
+  
+    const x = random(-MAGNITUDE,MAGNITUDE);
+    const y = random(-MAGNITUDE, MAGNITUDE);
+
+    particle.style.transform = `translate(${x},${y})`;
+    
     particle.style.setProperty(
       '--fade-duration',
       FADE_DURATION + 'ms'
