@@ -36,7 +36,7 @@ btn.addEventListener('click', () => {
     const x = random(-MAGNITUDE,MAGNITUDE);
     const y = random(-MAGNITUDE, MAGNITUDE);
 
-    particle.style.transform = `translate(${x},${y})`;
+    particle.style.transform = `translate(${x}px, ${y}px)`;
     
     particle.style.setProperty(
       '--fade-duration',
