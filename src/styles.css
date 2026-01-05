@@ -1,5 +1,6 @@
 html {
   --white: #fff;
+  --particle-curve: cubic-bezier(0.2, 0.56, 0, 1);
 }
 body {
   display: grid;

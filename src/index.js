@@ -26,15 +26,15 @@ btn.addEventListener('click', () => {
 
   // We Will Collect Freshly Created Particle in this array:
   const particles = [];
-  range(5).forEach(() => {
+  range(10).forEach(() => {
     const particle = document.createElement('span');
     particle.classList.add('particle');
 
 //    particle.style.top = random(0,100) + '%';
 //    particle.style.left = random(0,100) + '%';
   
-    const x = random(-MAGNITUDE,MAGNITUDE);
-    const y = random(-MAGNITUDE, MAGNITUDE);
+    // const x = random(-MAGNITUDE,MAGNITUDE);
+    // const y = random(-MAGNITUDE, MAGNITUDE);
 
     particle.style.transform = `translate(${x}px, ${y}px)`;
     
@@ -56,3 +56,12 @@ btn.addEventListener('click', () => {
   },FADE_DURATION  + 200)
 
 });
+
+const convertPolarToCartesian = (angle,distance) => {
+  const angleInRadians = convertDegreeToRadian(angle);
+  const x = Math.cos(angleInRadians) * distance;
+  const y = Math.sin(angleInRadians) * distance;
+  return [x,y];
+}
+
+const convertDegreeToRadian = (angle) => (angle * Math.PI) / 100;
