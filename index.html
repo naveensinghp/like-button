@@ -29,6 +29,15 @@
         }
       }
 
+      @keyframes disperse {
+        to {
+          transform: translate(
+            calc(cos(var(--angle)) * var(--distance)),
+            calc(sin(var(--angle)) * var(--distance))
+          );
+        }
+      }
+
       .particle {
         position: absolute;
         width: 12px;
@@ -36,7 +45,9 @@
         border-radius: 50%;
         background: indianred;
         pointer-events: none;
-        animation: fadeToTransparent var(--fade-duration) forwards, fromCenter 500ms;
+        animation: 
+          fadeToTransparent var(--fade-duration) forwards, 
+          disperse 500ms forwards var(--particle-curve);
         transform: translate(-50%,-50%);
       }
       
