@@ -8,7 +8,13 @@ const btn = document.querySelector('.particleButton');
 // This ensures the cleanup timeout will never fire 
 // before the animation has completed 
 const FADE_DURATION = 1000;
+const NUM_OF_PARTICLES = 5;
 const MAGNITUDE = 50;
+
+// JITTER is the amount of variance allowed for each angle
+
+// Tweak this value to control how orderly / chaotic the animation appears
+const JITTER = 40;
 
 
 
@@ -16,9 +22,7 @@ btn.addEventListener('click', () => {
   btn.classList.toggle('liked');
 
   const isLiked = btn.classList.contains('liked');
-  
-  // Bail out early if the user is *undoing* their like.
-  // No particles in this case.
+
   if (!isLiked) {
     return;
   }
@@ -26,17 +30,19 @@ btn.addEventListener('click', () => {
 
   // We Will Collect Freshly Created Particle in this array:
   const particles = [];
-  range(10).forEach(() => {
+  range(NUM_OF_PARTICLES).forEach((index) => {
     const particle = document.createElement('span');
     particle.classList.add('particle');
 
-//    particle.style.top = random(0,100) + '%';
-//    particle.style.left = random(0,100) + '%';
-  
-    // const x = random(-MAGNITUDE,MAGNITUDE);
-    // const y = random(-MAGNITUDE, MAGNITUDE);
+    // Divide the 360 filled into equally-sliced wedges, 
+    // and grab N wedges, where N is the particle's index.
+    const angle = (360 / NUM_OF_PARTICLES) * index * random(-JITTER,JITTER);
+    const distance = random(32,64);
 
-    particle.style.transform = `translate(${x}px, ${y}px)`;
+    particle.style.setProperty('--angle', angle + 'deg');
+    particle.style.setProperty('--distance', distance + 'px');
+
+   
     
     particle.style.setProperty(
       '--fade-duration',
