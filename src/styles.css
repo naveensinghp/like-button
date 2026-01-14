@@ -1,5 +1,17 @@
+.particle {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+  pointer-events: none;
+}
+  
+
 html {
-  --white: #fff;
+  --red: oklch(0.65 0.3 19.41);
   --particle-curve: cubic-bezier(0.2, 0.56, 0, 1);
 }
 body {
@@ -18,14 +30,15 @@ body {
 
   &:hover {
     background: hsl(0deg 0% 100% / 0.1);
+
     path {
-      stroke: var(--white);
+      stroke: var(--red);
     }
   }
 
   &.liked path {
-    fill: var(--white);
-    stroke: var(--white);
+    fill: var(--red);
+    stroke: var(--red);
   }
 }
 
