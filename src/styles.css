@@ -1,12 +1,62 @@
+@keyframes twinkle {
+  from {
+    opacity: var(--twinkle-amount);
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeToTransparent {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes disperse {
+  to {
+    transform: translate(
+      calc(cos(var(--angle)) * var(--distance)),
+      calc(sin(var(--angle)) * var(--distance))
+    );
+  }
+}
+@keyframes circleColorShift {
+  from {
+    background: hsl(350deg 100% 60%);
+  }
+}
+@keyframes fadeFromOpaque {
+  from {
+    opacity: 1;
+  }
+}
+
+.popCircle {
+  position: absolute;
+  inset: 0;
+  background: hsl(270deg 100% 80%);
+  border-radius: 50%;
+  opacity: 0;
+}
+.particleButton.liked .popCircle {
+  animation:
+    fromShrunken var(--pop-circle-duration),
+    circleColorShift var(--pop-circle-duration),
+    fadeFromOpaque 300ms var(--pop-circle-duration) backwards;
+}
+
 .particle {
   position: absolute;
   inset: 0;
+  width: var(--size);
+  height: var(--size);
   margin: auto;
-  width: 12px;
-  height: 12px;
   border-radius: 50%;
   background: white;
   pointer-events: none;
+  animation:
+    twinkle var(--twinkle-duration) infinite alternate ease-in-out,
+    fadeToTransparent var(--fade-duration) var(--fade-delay) forwards,
+    disperse var(--pop-duration) forwards var(--particle-curve);
 }
   
 
