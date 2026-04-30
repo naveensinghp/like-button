@@ -43,7 +43,7 @@ export const clampedNormalize = (
     currentScaleMin,
     currentScaleMax,
     newScaleMin = 0,
-    newSclaeMax = 1
+    newScaleMax = 1
 ) => {
     return clamp(
          normalize(
