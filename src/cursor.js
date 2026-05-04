@@ -4,7 +4,7 @@ import { getDistanceBetweenPoints, clampedNormalize } from './utils';
 
 const socket = document.querySelector('.socket');
 const ball = document.querySelector('.ball');
-
+  const boundingBox = socket.getBoundingClientRect();
 window.addEventListener('pointermove', (event) => {
   // Grab the cursor’s X/Y position from the
   // `event` object:
@@ -16,7 +16,7 @@ window.addEventListener('pointermove', (event) => {
   // Grab the element’s center position by
   // generating a bounding box, and calculating
   // the center point:
-  const boundingBox = socket.getBoundingClientRect();
+  // const boundingBox = socket.getBoundingClientRect();
   // const centerX =
   //   boundingBox.left + boundingBox.width / 2;
   // const centerY =
