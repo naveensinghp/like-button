@@ -4,7 +4,13 @@ import { getDistanceBetweenPoints, clampedNormalize } from './utils';
 
 const socket = document.querySelector('.socket');
 const ball = document.querySelector('.ball');
-  const boundingBox = socket.getBoundingClientRect();
+  
+
+const getThrottledBoundingBox = throttle(() => {
+  console.log("Recalculating bounding box",Date.now());
+  return socket.getBoundingClientRect();
+},500);
+
 window.addEventListener('pointermove', (event) => {
   // Grab the cursor’s X/Y position from the
   // `event` object:
@@ -17,6 +23,11 @@ window.addEventListener('pointermove', (event) => {
   // generating a bounding box, and calculating
   // the center point:
   // const boundingBox = socket.getBoundingClientRect();
+
+  // Call our wrapped function, rather than calling .getBoundingClientRect() directly
+
+  const boudingBox = getThrottledBoundingBox();
+
   // const centerX =
   //   boundingBox.left + boundingBox.width / 2;
   // const centerY =
